@@ -1,0 +1,235 @@
+/* ====================================================================
+   LUNARIS — Responsive Layout Styles
+   ==================================================================== */
+
+/* Large Tablets & Medium Desktops (max-width: 1080px) */
+@media (max-width: 1080px) {
+  :root {
+    --nav-height: 70px;
+  }
+
+  .nav-links-desktop {
+    gap: 14px;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+  }
+
+  .pillars-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .objectives-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .members-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .activities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .process-timeline {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablets (max-width: 860px) */
+@media (max-width: 860px) {
+  .nav-links-desktop,
+  .nav-cta-btn {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-padding {
+    padding: 90px 0;
+  }
+
+  .section-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-celestial-wrap {
+    width: 440px;
+    height: 440px;
+  }
+
+  .pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .about-intro-box {
+    padding: 36px 28px;
+  }
+
+  .about-lead-text {
+    font-size: 1.15rem;
+  }
+
+  .qualities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recruitment-card-main {
+    padding: 40px 28px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+
+  .application-form-wrapper {
+    padding: 36px 24px;
+  }
+
+  .rule-item-list {
+    padding: 0 20px 22px 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .footer-nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+/* Mobile Phones (max-width: 580px) */
+@media (max-width: 580px) {
+  .section-padding {
+    padding: 70px 0;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-celestial-wrap {
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero-moon-disk {
+    inset: 20px;
+  }
+
+  .hero-sub-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    padding: 6px 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 0.88rem;
+  }
+
+  .objectives-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .members-grid {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .qualities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rule-title-wrap {
+    gap: 14px;
+  }
+
+  .rule-num {
+    width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+
+  .rule-group-title {
+    font-size: 1.08rem;
+  }
+
+  .schedule-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .schedule-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .contact-cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-cta-buttons .btn-primary,
+  .contact-cta-buttons .btn-secondary {
+    width: 100%;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}

@@ -1,0 +1,246 @@
+/* ====================================================================
+   LUNARIS — Cinematic Animations & Transitions
+   ==================================================================== */
+
+/* Hero Entrance Choreography */
+.hero-celestial-wrap {
+  animation: heroMoonReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-sub-label {
+  animation: heroItemFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.hero-title {
+  animation: heroTitleReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.hero-subtitle {
+  animation: heroItemFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.hero-description {
+  animation: heroItemFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+.hero-buttons {
+  animation: heroItemFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+.hero-scroll-indicator {
+  animation: heroItemFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.1s both;
+}
+
+@keyframes heroMoonReveal {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+    filter: blur(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes heroTitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+    letter-spacing: 0.3em;
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.18em;
+    filter: blur(0px);
+  }
+}
+
+@keyframes heroItemFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Continuous Lunar Pulse */
+@keyframes lunarPulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+/* Hero Scroll Mouse Wheel Indicator */
+@keyframes scrollWheel {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, 10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 14px);
+  }
+}
+
+/* ====================================================================
+   SCROLL-TRIGGERED INTERSECTION OBSERVER REVEALS
+   ==================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Headings */
+.section-heading-wrap {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-heading-wrap.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered Items */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0s),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.stagger-item.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Directional entrance variants */
+.enter-from-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.enter-from-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.enter-from-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.enter-from-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Subtle Shimmer for Primary Buttons */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  transition: all 0.6s ease;
+}
+
+.btn-primary:hover::after {
+  left: 120%;
+}
+
+/* Spinner for async actions */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-top-color: #030712;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ====================================================================
+   PREFERS REDUCED MOTION ACCESSIBILITY
+   ==================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal-on-scroll,
+  .stagger-item,
+  .section-heading-wrap,
+  .enter-from-left,
+  .enter-from-right {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-celestial-wrap,
+  .hero-sub-label,
+  .hero-title,
+  .hero-subtitle,
+  .hero-description,
+  .hero-buttons,
+  .hero-scroll-indicator {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-eclipse-glow {
+    animation: none !important;
+    transform: none !important;
+  }
+}
