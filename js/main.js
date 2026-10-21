@@ -19,10 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. Setup Rules Accordion Click Handlers
   setupRulesAccordion();
 
-  // 4. Recruitment Form Logic
-  setupRecruitmentForm();
-
-  // 5. Mobile Menu Logic
+  // 4. Mobile Menu Logic
   setupMobileMenu();
 
   /* -------------------------------------------------------------
@@ -71,99 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function setupRecruitmentForm() {
-    const form = document.getElementById('recruitment-form');
-    const feedbackBox = document.getElementById('form-feedback');
-    const submitBtn = document.getElementById('submit-app-btn');
-    if (!form || !feedbackBox || !submitBtn) return;
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const robloxUsername = document.getElementById('roblox-username').value.trim();
-      const displayName = document.getElementById('display-name').value.trim();
-      const experienceLevel = document.getElementById('experience-level').value;
-      const combatStrengths = document.getElementById('combat-strengths').value.trim();
-      const availability = document.getElementById('availability').value.trim();
-      const joinReason = document.getElementById('join-reason').value.trim();
-
-      if (!robloxUsername || !displayName || !experienceLevel || !combatStrengths || !joinReason) {
-        showFeedback('Please fill out all required fields before submitting.', 'error');
-        return;
-      }
-
-      // Anti-phishing guard: Reject passwords or sensitive keywords
-      const sensitiveKeywords = ['password', 'pass', 'pin', 'login', 'token', '2fa'];
-      const combinedText = `${robloxUsername} ${displayName} ${combatStrengths} ${joinReason}`.toLowerCase();
-      for (const kw of sensitiveKeywords) {
-        if (combinedText.includes(kw)) {
-          showFeedback('Security Notice: Never share passwords, pins, or sensitive account credentials.', 'error');
-          return;
-        }
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span class="spinner"></span> Processing Application...';
-
-      const webhookUrl = config.recruitmentWebhookUrl;
-
-      if (webhookUrl && webhookUrl.startsWith('https://discord.com/api/webhooks/')) {
-        try {
-          const payload = {
-            embeds: [{
-              title: "🌙 New LUNARIS Clan Recruitment Application",
-              color: 0x38bdf8,
-              fields: [
-                { name: "Roblox Username", value: robloxUsername, inline: true },
-                { name: "Display Name", value: displayName, inline: true },
-                { name: "Experience Level", value: experienceLevel, inline: true },
-                { name: "Combat Strengths", value: combatStrengths, inline: false },
-                { name: "Availability", value: availability || "Not specified", inline: true },
-                { name: "Reason for Joining", value: joinReason, inline: false }
-              ],
-              footer: { text: "LUNARIS TSB Clan • Recruitment System" },
-              timestamp: new Date().toISOString()
-            }]
-          };
-
-          const res = await fetch(webhookUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-
-          if (res.ok) {
-            showFeedback('Application submitted directly to LUNARIS Clan leadership! Please join our Discord server for tryout scheduling.', 'success');
-            form.reset();
-          } else {
-            showFeedback('Submission notice: Discord webhook rejected the request. Please verify your webhook URL in js/clan-config.js.', 'warning');
-          }
-        } catch (err) {
-          console.error(err);
-          showFeedback('Network notice: Unable to contact webhook. Please join our Discord server to submit directly.', 'warning');
-        }
-      } else {
-        setTimeout(() => {
-          showFeedback(
-            '<strong>Demonstration Mode:</strong> Application verified successfully!<br/>' +
-            '<em>Note:</em> Static hosting does not store database entries. To receive real applications in your Discord staff channel, simply add your Discord Webhook URL inside <code>js/clan-config.js</code>.',
-            'info'
-          );
-          form.reset();
-        }, 600);
-      }
-
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'SUBMIT APPLICATION';
-    });
-
-    function showFeedback(msg, type) {
-      feedbackBox.className = `form-feedback-box ${type}`;
-      feedbackBox.innerHTML = msg;
-      feedbackBox.style.display = 'block';
-      feedbackBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  }
 
   function setupMobileMenu() {
     const hamburgerBtn = document.getElementById('hamburger-btn');

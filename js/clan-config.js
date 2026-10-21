@@ -20,7 +20,7 @@ const CLAN_CONFIG = {
   // Links & Socials
   // Replace this Discord invite with your active server invite link
   discordInvite: "https://discord.gg/ajQB3fH4rZ",
-  robloxGroup: "https://www.roblox.com/groups/lunaris-tsb", // Optional: leave blank if none
+  robloxGroup: "https://www.roblox.com/communities/34170623/DaxrkEmperors#!/about",
   youtubeChannel: "", // Optional: e.g. "https://youtube.com/@lunaris_tsb"
   tiktok: "", // Optional
 
