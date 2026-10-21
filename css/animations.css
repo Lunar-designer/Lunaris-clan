@@ -33,36 +33,30 @@
 
 @keyframes heroMoonReveal {
   0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.85);
-    filter: blur(15px);
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(0.96);
   }
   100% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-    filter: blur(0px);
   }
 }
 
 @keyframes heroTitleReveal {
   0% {
-    opacity: 0;
-    transform: translateY(35px);
-    letter-spacing: 0.3em;
-    filter: blur(8px);
+    opacity: 0.9;
+    transform: translateY(12px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
-    letter-spacing: 0.18em;
-    filter: blur(0px);
   }
 }
 
 @keyframes heroItemFadeUp {
   0% {
-    opacity: 0;
-    transform: translateY(24px);
+    opacity: 0.9;
+    transform: translateY(8px);
   }
   100% {
     opacity: 1;
@@ -102,64 +96,45 @@
    SCROLL-TRIGGERED INTERSECTION OBSERVER REVEALS
    ==================================================================== */
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .reveal-on-scroll.revealed {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: none !important;
 }
 
 /* Section Headings */
 .section-heading-wrap {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .section-heading-wrap.revealed {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: none !important;
 }
 
 /* Staggered Items */
 .stagger-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0s),
-              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0s);
-  will-change: opacity, transform;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .stagger-item.revealed {
   opacity: 1 !important;
-  transform: translateY(0) !important;
+  transform: none !important;
 }
 
 /* Directional entrance variants */
-.enter-from-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.enter-from-left.revealed {
-  opacity: 1;
-  transform: translateX(0);
-}
-
+.enter-from-left,
 .enter-from-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.enter-from-right.revealed {
-  opacity: 1;
-  transform: translateX(0);
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* Subtle Shimmer for Primary Buttons */
