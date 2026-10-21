@@ -111,26 +111,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 5. Intersection Observer for Scroll Reveals
-  if (!prefersReducedMotion) {
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
-          // Once revealed, unobserve so animation does not re-trigger repeatedly
           observer.unobserve(entry.target);
         }
       });
     }, {
       root: null,
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
+      threshold: 0.05,
+      rootMargin: '60px 0px 60px 0px'
     });
 
     document.querySelectorAll('.reveal-on-scroll, .stagger-item, .section-heading-wrap').forEach(el => {
       revealObserver.observe(el);
     });
+
+    // Safety reveal: guarantee any element already near or in viewport is visible
+    setTimeout(() => {
+      document.querySelectorAll('.reveal-on-scroll, .stagger-item, .section-heading-wrap').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 150) {
+          el.classList.add('revealed');
+        }
+      });
+    }, 250);
   } else {
-    // If reduced motion is requested, immediately mark elements revealed
+    // If reduced motion is requested or observer unavailable, immediately show all elements
     document.querySelectorAll('.reveal-on-scroll, .stagger-item, .section-heading-wrap').forEach(el => {
       el.classList.add('revealed');
     });
